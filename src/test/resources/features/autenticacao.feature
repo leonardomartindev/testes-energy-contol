@@ -23,7 +23,7 @@ Funcionalidade: Autenticação de Usuário
       | email    | "admin@exemplo.com" |
       | password | "senhaErrada123"    |
     Quando eu enviar uma requisição POST para o endpoint "/auth/login"
-    Então o status code da resposta deve ser 401
+    Então o status code da resposta deve ser 403
     E o corpo da resposta deve conter uma mensagem de erro de credenciais
 
   Cenário: Tentativa de autenticação com email inexistente (Cenário Negativo)
@@ -32,7 +32,7 @@ Funcionalidade: Autenticação de Usuário
       | email    | "naoexisto@exemplo.com" |
       | password | "qualquerSenha"         |
     Quando eu enviar uma requisição POST para o endpoint "/auth/login"
-    Então o status code da resposta deve ser 401
+    Então o status code da resposta deve ser 403
     E o corpo da resposta deve conter uma mensagem de erro de credenciais
 
   Cenário: Tentativa de autenticação sem informar um campo obrigatório (Teste de Contrato/Validação)

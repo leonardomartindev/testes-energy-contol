@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "user_id": {
+        "type": "integer"
+      },
+      "user_name": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string",
+        "format": "email"
+      },
+      "user_role": {
+        "type": "string",
+        "enum": ["ADMIN", "USER", "OTHER_ROLE"]
+      }
+    },
+    "required": ["user_id", "user_name", "email", "user_role"]
+  }
+}

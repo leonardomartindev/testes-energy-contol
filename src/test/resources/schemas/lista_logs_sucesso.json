@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "idSet": {
+        "type": "integer"
+      },
+      "logMessage": {
+        "type": "string"
+      },
+      "dateInc": {
+        "type": "string",
+        "format": "date"
+      },
+      "tempoInc": {
+        "type": "string"
+
+      }
+    },
+    "required": ["idSet", "logMessage", "dateInc", "tempoInc"]
+  }
+}

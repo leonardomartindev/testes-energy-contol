@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "idEquip": {
+        "type": "integer"
+      },
+      "nmEquipamento": {
+        "type": "string"
+      },
+      "tipo": {
+        "type": "string"
+      },
+      "setor": {
+        "type": "object",
+        "properties": {
+          "idSet": {
+            "type": "integer"
+          },
+          "nmSetor": {
+            "type": "string"
+          },
+          "nrAndar": {
+            "type": "integer"
+          }
+        },
+        "required": ["idSet", "nmSetor", "nrAndar"]
+      }
+    },
+    "required": ["idEquip", "nmEquipamento", "tipo", "setor"]
+  }
+}

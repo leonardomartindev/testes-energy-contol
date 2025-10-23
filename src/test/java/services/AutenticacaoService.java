@@ -1,4 +1,3 @@
-// services/AutenticacaoService.java
 package services;
 
 import com.google.gson.Gson;
@@ -7,15 +6,12 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import model.AutenticacaoModel;
 
-// Importe o 'given' estático do RestAssured
 import static io.restassured.RestAssured.given;
 
 public class AutenticacaoService {
 
-    // A URL está correta, como você confirmou
     private String baseUrl = "http://localhost:8080";
 
-    // O Gson que você criou
     private Gson gson = new GsonBuilder()
             .excludeFieldsWithoutExposeAnnotation()
             .create();

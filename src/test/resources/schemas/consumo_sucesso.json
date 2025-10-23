@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "dataHora": {
+      "type": "string"
+    },
+    "kwConsumo": {
+      "type": "number"
+    },
+    "equipamento": {
+      "type": "object",
+      "properties": {
+        "idEquip": {
+          "type": "integer"
+        },
+        "nmEquipamento": {
+          "type": "string"
+        },
+        "tipo": {
+          "type": "string"
+        },
+        "setor": {
+          "type": "object",
+          "properties": {
+            "idSet": {
+              "type": "integer"
+            },
+            "nmSetor": {
+              "type": "string"
+            },
+            "nrAndar": {
+              "type": "integer"
+            }
+          },
+          "required": ["idSet", "nmSetor", "nrAndar"]
+        }
+      },
+      "required": ["idEquip", "nmEquipamento", "tipo", "setor"]
+    }
+  },
+  "required": ["id", "dataHora", "kwConsumo", "equipamento"]
+}
