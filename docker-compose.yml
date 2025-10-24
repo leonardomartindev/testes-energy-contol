@@ -1,0 +1,28 @@
+services:
+  energy-control-app:
+    build: .
+    container_name: energy-control-app
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:oracle:thin:@oracle-db:1521/XEPDB1
+      - SPRING_DATASOURCE_USERNAME=RM554487
+      - SPRING_DATASOURCE_PASSWORD=100796
+      - SPRING_FLYWAY_BASELINE-ON-MIGRATE=true
+    depends_on:
+      - oracle-db
+
+  oracle-db:
+    image: gvenzl/oracle-xe:21-slim-faststart
+    container_name: oracle-db
+    ports:
+      - "1521:1521"
+    environment:
+      - ORACLE_PASSWORD=oracle
+      - APP_USER=RM554487
+      - APP_USER_PASSWORD=100796
+    volumes:
+      - oracle_data:/opt/oracle/oradata
+
+volumes:
+  oracle_data:
