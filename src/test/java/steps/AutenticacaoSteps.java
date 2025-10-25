@@ -119,7 +119,7 @@ public class AutenticacaoSteps {
         String responseBody = response.getBody().asString();
 
         if (contentType != null && contentType.contains("application/json")) {
-            response.then().body(campo, equalTo("não deve estar em branco"));
+            response.then().body(campo, equalTo("must not be blank"));
 
         } else {
             assertThat(responseBody, containsString("propertyPath=" + campo));
