@@ -128,6 +128,7 @@ public class AutenticacaoSteps {
                     either(containsString("o deve ser nulo"))
                             .or(containsString("não deve estar em branco"))
                             .or(containsString("obrigatório"))
+                            .or(containsString("must not be null"))
             );
         }
     }
