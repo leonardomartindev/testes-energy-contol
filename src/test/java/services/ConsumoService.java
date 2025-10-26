@@ -27,6 +27,16 @@ public class ConsumoService {
                 .contentType("application/json");
     }
 
+    public Response criarConsumo(ConsumoModel consumoPayload, String token) {
+        String jsonBody = gson.toJson(consumoPayload);
+
+        RequestSpecification request = buildRequest()
+                .header("Authorization", "Bearer " + token)
+                .body(jsonBody);
+
+        return request.post(endpointBase);
+    }
+
     /**
      * Método 1: Atualiza um registro de consumo (Cenários de Sucesso, 400, 404 - com Token)
      * Recebe o ID do consumo, o Model do payload e o Token
