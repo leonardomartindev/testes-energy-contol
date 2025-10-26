@@ -24,6 +24,18 @@ public class ConsumoSteps {
         this.testContext = testContext;
     }
 
+    @Dado("que eu tenha um payload \\(corpo) válido para CRIAR o consumo:")
+    public void queEuTenhaUmPayloadCorpoValidoParaCRIAROConsumo(DataTable dataTable) {
+        this.consumoPayload = carregarConsumoParaCriacaoDoDataTable(dataTable);
+    }
+
+    @Quando("eu enviar uma requisição POST de CRIACAO DE CONSUMO para o endpoint {string}")
+    public void euEnviarUmaRequisicaoPOSTDeCRIACAODECONSUMOParaOEndpoint(String endpoint) {
+        String token = testContext.getToken();
+        testContext.setResponse(
+                consumoService.criarConsumo(this.consumoPayload, token)
+        );
+    }
 
     @Dado("que eu tenha um payload \\(corpo) válido para ATUALIZAR o consumo:")
     public void queEuTenhaUmPayloadCorpoValidoParaATUALIZAROConsumo(DataTable dataTable) {
@@ -96,6 +108,16 @@ public class ConsumoSteps {
         ConsumoModel model = new ConsumoModel();
         Map<String, String> data = dataTable.asMap(String.class, String.class);
         model.setId(Integer.parseInt(data.get("id")));
+        model.setDataHora(data.get("dataHora").replace("\"", ""));
+        model.setKwConsumo(Double.parseDouble(data.get("kwConsumo")));
+        int idEquip = Integer.parseInt(data.get("idEquip"));
+        model.setEquipamento(new EquipamentoIdModel(idEquip));
+        return model;
+    }
+
+    private ConsumoModel carregarConsumoParaCriacaoDoDataTable(DataTable dataTable) {
+        ConsumoModel model = new ConsumoModel();
+        Map<String, String> data = dataTable.asMap(String.class, String.class);
         model.setDataHora(data.get("dataHora").replace("\"", ""));
         model.setKwConsumo(Double.parseDouble(data.get("kwConsumo")));
         int idEquip = Integer.parseInt(data.get("idEquip"));

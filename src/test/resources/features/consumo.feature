@@ -8,6 +8,19 @@ Funcionalidade: Atualização de Consumo
     Dado que a API esteja acessível na URL base "http://localhost:8080"
     E que eu possua credenciais de um usuário válido para autenticação
 
+  @CriacaoConsumoSucesso
+  Cenário: Criação de consumo bem-sucedida
+    Dado que eu obtenha um token de autenticação
+    E que eu tenha um payload (corpo) válido para CRIAR o consumo:
+      | dataHora  | "2025-05-08 21:31:00"  |
+      | kwConsumo | 300.0                  |
+      | idEquip   | 1                      |
+    Quando eu enviar uma requisição POST de CRIACAO DE CONSUMO para o endpoint "/api/consumo"
+    Então o status code da resposta deve ser 201
+    E o corpo da resposta deve conter o decimal "kwConsumo" igual a "300.0" do consumo
+    E o corpo da resposta deve conter o inteiro "equipamento.idEquip" igual a 1 do consumo
+    E o corpo da resposta deve estar de acordo com o JSON Schema de "consumo_sucesso"
+
   @AtualizacaoConsumoSucesso
   Cenário: Atualização de consumo bem-sucedida
     Dado que eu obtenha um token de autenticação
