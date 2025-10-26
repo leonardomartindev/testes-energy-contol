@@ -8,6 +8,8 @@ Antes de começar, garanta que você tenha as seguintes ferramentas instaladas e
 
 *   **Docker e Docker Compose** (Geralmente incluídos no Docker Desktop)
 *   **Git** (para clonar o repositório)
+*   **IntelliJ IDEA** (IDE para trabalhar com Java)
+*   **Docker Desktop** (para gerenciar containers, importante para quem utilza Windows)
 
 ### Como Executar
 
@@ -31,6 +33,9 @@ Antes de iniciar os containers Docker, é crucial construir o projeto para que o
 4.  Primeiro, dê dois cliques em `clean` para limpar builds anteriores e, depois, dois cliques em `package` para compilar e empacotar o projeto.
 5.  Após a conclusão, a pasta `target` será criada na raiz do projeto, contendo o arquivo `EnergyControl-0.0.1-SNAPSHOT.jar`, que o Docker precisará para executar o container com sucesso.
 
+Exemplo:
+![Target](./assets/target.jpg)
+
 **3. Navegar até o Diretório**
 
 Entre na pasta do projeto que você acabou de clonar:
@@ -42,7 +47,8 @@ cd energycontrolapi
 
 **4. Construir e Iniciar os Containers**
 
-Execute o Docker Compose. Este comando irá baixar a imagem do banco de dados, construir a imagem da sua API (a partir do `Dockerfile`) e iniciar ambos os containers em segundo plano.
+Caso utilize `Windows`, abra o Docker Desktop, e depois rode o comando abaixo.
+Este comando irá baixar a imagem do banco de dados, construir a imagem da sua API (a partir do `Dockerfile`) e iniciar ambos os containers em segundo plano.
 
 ```bash
 docker compose up -d
@@ -138,5 +144,7 @@ Com o repositório de testes clonado, configurado e a API em execução, siga os
 2.  Abra o arquivo `autenticacao.feature`.
 3.  Na linha 2, em `Funcionalidade`, clique no botão verde (Run: 'Feature: autenticacao').
 4.  Aguarde a janela de `Test Results`, onde será retornado o resultado de 21 steps com o status 'passed'.
+
+*(Quando executar o teste pela primeira vez, pode ocorrer um erro de marcação `para solucionar, basta aplicar o passo 3 - Habilitar Annotation Processing`)*
 
 Para testar os demais cenários BDD, basta replicar o mesmo processo nos demais arquivos `.feature` do diretório `src/test/resources/features`.
